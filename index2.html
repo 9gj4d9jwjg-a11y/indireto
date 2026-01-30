@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>O Segredo do Lifestyle • 2026</title>
+  <meta name="theme-color" content="#000000">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {
+      background: #000;
+      color: #fff;
+      font-family: "Inter", sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .screen {
+      position: absolute;
+      top:0;left:0;
+      width:100%;height:100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      text-align: center;
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+    .visible {opacity: 1; transform: scale(1); z-index: 10;}
+    h1,h2 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      background: linear-gradient(90deg, #d4af37, #f2eab8, #d4af37);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+    }
+    .visible h1, .visible h2 {opacity: 1; transform: translateY(0);}
+    .text {
+      color:#ccc;
+      max-width:420px;
+      font-size:1.05rem;
+      line-height:1.6;
+      margin-bottom:25px;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s;
+    }
+    .visible .text {opacity: 1; transform: translateY(0);}
+    button {
+      background: #fff;
+      color:#000;
+      border:none;
+      border-radius:40px;
+      padding:14px 32px;
+      font-weight:700;
+      font-size:1rem;
+      cursor:pointer;
+      transition:all .3s;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease 3s, transform 0.8s ease 3s; /* Delay de 3 segundos */
+      pointer-events: none; /* Impede clique antes de aparecer */
+    }
+    .visible button {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    button:hover {
+      background:#f2eab8;
+      transform:translateY(-2px);
+    }
+    .lock{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      font-size:.8rem;
+      color:#666;
+      position:absolute;
+      bottom:30px;
+    }
+    .referral-badge {
+      display: none;
+      background: rgba(212, 175, 55, 0.15);
+      color: #d4af37;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      backdrop-filter: blur(5px);
+    }
+  </style>
+</head>
+<body>
+  <div id="referral-area" class="referral-badge"></div>
+
+  <!-- TELA 1 -->
+  <section id="tela1" class="screen visible">
+    <p class="text">Já reparou em algumas garotas que vivem como se o mundo fosse delas?</p>
+    <p class="text">Viagens sem data de volta, jantares que parecem cena de filme, liberdade que não explica conta bancária.</p>
+    <button onclick="nextScreen(2)">Continuar lendo...</button>
+  </section>
+
+  <!-- TELA 2 – GANCHO FORTE AQUI -->
+  <section id="tela2" class="screen">
+    <h1>"A conta não fecha, né?"</h1>
+    <p class="text">Não é sorte. Não é herança.</p>
+    <p class="text">É uma escolha sutil: entender que presença, carisma e companhia jovem abrem portas que dinheiro sozinho não compra.</p>
+    <button onclick="nextScreen(3)">Quero saber mais</button>
+  </section>
+
+  <!-- TELA 3 -->
+  <section id="tela3" class="screen">
+    <p class="text">Esse círculo não aparece por acaso.</p>
+    <p class="text">Ele começa com uma conversa honesta... e a sua pode começar agora.</p>
+    <p class="text"><strong>Sigilo total. Sem exposição.</strong></p>
+    <button onclick="nextScreen(4)">Quero descobrir o segredo</button>
+  </section>
+
+  <!-- TELA 4 -->
+  <section id="tela4" class="screen">
+    <h2>Seu acesso está quase liberado.</h2>
+    <p class="text">É presença. É estratégia. É saber com quem estar.</p>
+    <button id="whats">Solicitar apresentação 💬</button>
+    <div class="lock"><span>🔒</span> Sigilo Absoluto</div>
+  </section>
+
+  <script>
+    const SEU_WHATSAPP = "5511999999999"; // MUDE PARA O SEU NÚMERO REAL
+
+    function nextScreen(num){
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('visible'));
+      document.getElementById(`tela${num}`).classList.add('visible');
+    }
+
+    // Lógica de indicação
+    const params = new URLSearchParams(window.location.search);
+    const madrinha = params.get('indicada_por');
+    const banner = document.getElementById('referral-area');
+
+    let textoMensagem = "Oi! Vi o 'segredo do lifestyle' e fiquei curiosa. Quero saber como funciona 😊";
+
+    if (madrinha) {
+      textoMensagem = `Oi! A ${madrinha} me mandou o link do segredo do lifestyle. Fiquei super interessada, me conta como funciona? 💕`;
+      banner.style.display = "inline-block";
+      banner.innerHTML = `CONVITE VIP DE: ${madrinha}`;
+    }
+
+    document.getElementById("whats").addEventListener("click", ()=>{
+      window.location.href = `https://api.whatsapp.com/send?phone=${SEU_WHATSAPP}&text=${encodeURIComponent(textoMensagem)}`;
+    });
+  </script>
+</body>
+</html>
