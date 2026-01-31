@@ -5,78 +5,89 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
   <title>O Segredo do Lifestyle • 2026</title>
   <meta name="theme-color" content="#000000">
-  <meta name="description" content="Existe um novo tipo de estratégia social que une presença, carisma e conexões certas. Descubra o movimento discreto que redefine o lifestyle em 2026.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * {margin:0;padding:0;box-sizing:border-box;}
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #000;
+      background: #000;
       color: #fff;
-      min-height: 100vh;
+      font-family: "Inter", sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .screen {
+      position: absolute;
+      top:0;left:0;
+      width:100%;height:100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      padding: 24px;
-      line-height: 1.6;
+      align-items: center;
+      padding: 40px 20px;
+      text-align: center;
+      opacity: 0;
+      transform: scale(0.98);
+      transition: opacity 1.2s ease, transform 1.2s ease;
     }
-    .container { max-width: 440px; width: 100%; }
-    .hook-text {
-      font-size: 1.1rem;
-      color: #ccc;
-      margin-bottom: 20px;
-      font-weight: 300;
-    }
-    .highlight {
-      color: #fff;
-      font-weight: 600;
-    }
-    h1 {
+    .visible {opacity: 1; transform: scale(1); z-index: 10;}
+    h1,h2 {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 2.2rem;
-      line-height: 1.2;
       background: linear-gradient(90deg, #d4af37, #f2eab8, #d4af37);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 30px;
-      text-align: left;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
     }
-    .reveal-card {
-      background: rgba(255,255,255,0.08);
-      border-left: 3px solid #d4af37;
-      padding: 24px;
-      border-radius: 0 16px 16px 0;
-      margin-bottom: 35px;
-      backdrop-filter: blur(10px);
+    .visible h1, .visible h2 {opacity: 1; transform: translateY(0);}
+    .text {
+      color:#ccc;
+      max-width:420px;
+      font-size:1.05rem;
+      line-height:1.6;
+      margin-bottom:25px;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s;
     }
-    .reveal-text {
-      font-size: 1rem;
-      color: #e0e0e0;
-    }
-    .btn-whatsapp {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      width: 100%;
+    .visible .text {opacity: 1; transform: translateY(0);}
+    button {
       background: #fff;
-      color: #000;
-      font-weight: 700;
-      font-size: 1.05rem;
-      padding: 18px;
-      border-radius: 50px;
-      text-decoration: none;
-      transition: all 0.25s;
-      margin-top: 10px;
-      box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+      color:#000;
+      border:none;
+      border-radius:40px;
+      padding:14px 32px;
+      font-weight:700;
+      font-size:1rem;
+      cursor:pointer;
+      transition:all .3s;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease 3s, transform 0.8s ease 3s; /* Delay de 3 segundos */
+      pointer-events: none; /* Impede clique antes de aparecer */
     }
-    .btn-whatsapp:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+    .visible button {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    button:hover {
+      background:#f2eab8;
+      transform:translateY(-2px);
+    }
+    .lock{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      font-size:.8rem;
+      color:#666;
+      position:absolute;
+      bottom:30px;
     }
     .referral-badge {
       display: none;
@@ -85,83 +96,72 @@
       padding: 8px 16px;
       border-radius: 50px;
       font-size: 0.8rem;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       text-transform: uppercase;
       letter-spacing: 1px;
       font-weight: 600;
       backdrop-filter: blur(5px);
     }
-    .footer {
-      margin-top: 50px;
-      text-align: center;
-      font-size: 0.75rem;
-      color: #555;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-    .lock-icon { font-size: 1rem; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div id="referral-area" class="referral-badge"></div>
+  <div id="referral-area" class="referral-badge"></div>
 
-    <div class="hook-text">
-      Você já reparou como algumas mulheres estão sempre em lugares de sonho — <span class="highlight">Búzios, Gramado, Exterior</span>...
-    </div>
+  <!-- TELA 1 -->
+  <section id="tela1" class="screen visible">
+    <p class="text">Já reparou em algumas garotas que vivem como se o mundo fosse delas?</p>
+    <p class="text">Viagens sem data de volta, jantares que parecem cena de filme, liberdade que não explica conta bancária.</p>
+    <button onclick="nextScreen(2)">Continuar lendo...</button>
+  </section>
 
-    <div class="hook-text">
-      ...mesmo sem pais milionários, um trabalho exaustivo ou um namorado famoso bancando tudo?
-    </div>
-
+  <!-- TELA 2 – GANCHO FORTE AQUI -->
+  <section id="tela2" class="screen">
     <h1>"A conta não fecha, né?"</h1>
+    <p class="text">Não é sorte. Não é herança.</p>
+    <p class="text">É uma escolha sutil: entender que presença, carisma e companhia jovem abrem portas que dinheiro sozinho não compra.</p>
+    <button onclick="nextScreen(3)">Quero saber mais</button>
+  </section>
 
-    <div class="reveal-card">
-      <p class="reveal-text">
-        Talvez não seja sorte. Nem coincidência.<br><br>
-        Existe um <strong>novo tipo de estratégia social</strong> — discreta, inteligente e baseada em presença, carisma e conexões certas.<br><br>
-        Uma forma moderna de entender valor, propósito e estilo de vida… e transformar experiências em oportunidades reais.
-      </p>
-    </div>
+  <!-- TELA 3 -->
+  <section id="tela3" class="screen">
+    <p class="text">Esse círculo não aparece por acaso.</p>
+    <p class="text">Ele começa com uma conversa honesta... e a sua pode começar agora.</p>
+    <p class="text"><strong>Sigilo total. Sem exposição.</strong></p>
+    <button onclick="nextScreen(4)">Quero descobrir o segredo</button>
+  </section>
 
-    <p style="font-size: 0.9rem; margin-bottom: 20px; color: #aaa; text-align: center;">
-      Quer entender o movimento por trás disso? (sigilo total)
-    </p>
-
-    <a href="#" id="cta-link" class="btn-whatsapp">
-      QUERO DESCOBRIR O SEGREDO
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M5 12h14M12 5l7 7-7 7"/>
-      </svg>
-    </a>
-
-    <div class="footer">
-      <span class="lock-icon">🔒</span> Acesso Restrito • Sigilo Absoluto
-    </div>
-  </div>
+  <!-- TELA 4 -->
+  <section id="tela4" class="screen">
+    <h2>Seu acesso está quase liberado.</h2>
+    <p class="text">É presença. É estratégia. É saber com quem estar.</p>
+    <button id="whats">Solicitar apresentação 💬</button>
+    <div class="lock"><span>🔒</span> Sigilo Absoluto</div>
+  </section>
 
   <script>
-    // CONFIGURAÇÃO
-    const SEU_WHATSAPP = "5513991711564"; // MUDE PARA O SEU NÚMERO REAL
+    const SEU_WHATSAPP = "5511999999999"; // MUDE PARA O SEU NÚMERO REAL
+
+    function nextScreen(num){
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('visible'));
+      document.getElementById(`tela${num}`).classList.add('visible');
+    }
 
     // Lógica de indicação
     const params = new URLSearchParams(window.location.search);
     const madrinha = params.get('indicada_por');
-    const btn = document.getElementById('cta-link');
     const banner = document.getElementById('referral-area');
 
-    let textoMensagem = "Oi! Vi a página sobre o 'segredo do lifestyle' e fiquei super curiosa. Como funciona isso? Quero saber mais 😊";
+    let textoMensagem = "Oi! Vi o 'segredo do lifestyle' e fiquei curiosa. Quero saber como funciona 😊";
 
     if (madrinha) {
-      textoMensagem = `Oi! A *${madrinha}* me mandou o link sobre o segredo do lifestyle. Fiquei curiosa pra caramba, me conta como funciona? 💕`;
+      textoMensagem = `Oi! A ${madrinha} me mandou o link do segredo do lifestyle. Fiquei super interessada, me conta como funciona? 💕`;
       banner.style.display = "inline-block";
       banner.innerHTML = `CONVITE VIP DE: ${madrinha}`;
     }
 
-    // Link final pro WhatsApp
-    btn.href = `https://api.whatsapp.com/send?phone=${SEU_WHATSAPP}&text=${encodeURIComponent(textoMensagem)}`;
+    document.getElementById("whats").addEventListener("click", ()=>{
+      window.location.href = `https://api.whatsapp.com/send?phone=${SEU_WHATSAPP}&text=${encodeURIComponent(textoMensagem)}`;
+    });
   </script>
 </body>
 </html>
