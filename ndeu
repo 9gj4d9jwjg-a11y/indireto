@@ -1,0 +1,169 @@
+zero retorno
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>O Segredo do Lifestyle • 2026</title>
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Existe um novo tipo de estratégia social que une presença, carisma e conexões certas. Descubra o movimento discreto que redefine o lifestyle em 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #000;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      line-height: 1.6;
+    }
+    .container { max-width: 440px; width: 100%; }
+    .hook-text {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+    .highlight {
+      color: #fff;
+      font-weight: 600;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 2.2rem;
+      line-height: 1.2;
+      background: linear-gradient(90deg, #d4af37, #f2eab8, #d4af37);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+    .reveal-card {
+      background: rgba(255,255,255,0.08);
+      border-left: 3px solid #d4af37;
+      padding: 24px;
+      border-radius: 0 16px 16px 0;
+      margin-bottom: 35px;
+      backdrop-filter: blur(10px);
+    }
+    .reveal-text {
+      font-size: 1rem;
+      color: #e0e0e0;
+    }
+    .btn-whatsapp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 100%;
+      background: #fff;
+      color: #000;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 18px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.25s;
+      margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(255,255,255,0.1);
+    }
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+    }
+    .referral-badge {
+      display: none;
+      background: rgba(212, 175, 55, 0.15);
+      color: #d4af37;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      backdrop-filter: blur(5px);
+    }
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .lock-icon { font-size: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="referral-area" class="referral-badge"></div>
+
+    <div class="hook-text">
+      Você já reparou como algumas mulheres estão sempre em lugares de sonho — <span class="highlight">Búzios, Gramado, Exterior</span>...
+    </div>
+
+    <div class="hook-text">
+      ...mesmo sem pais milionários, um trabalho exaustivo ou um namorado famoso bancando tudo?
+    </div>
+
+    <h1>"A conta não fecha, né?"</h1>
+
+    <div class="reveal-card">
+      <p class="reveal-text">
+        Talvez não seja sorte. Nem coincidência.<br><br>
+        Existe um <strong>novo tipo de estratégia social</strong> — discreta, inteligente e baseada em presença, carisma e conexões certas.<br><br>
+        Uma forma moderna de entender valor, propósito e estilo de vida… e transformar experiências em oportunidades reais.
+      </p>
+    </div>
+
+    <p style="font-size: 0.9rem; margin-bottom: 20px; color: #aaa; text-align: center;">
+      Quer entender o movimento por trás disso? (sigilo total)
+    </p>
+
+    <a href="#" id="cta-link" class="btn-whatsapp">
+      QUERO DESCOBRIR O SEGREDO
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+
+    <div class="footer">
+      <span class="lock-icon">🔒</span> Acesso Restrito • Sigilo Absoluto
+    </div>
+  </div>
+
+  <script>
+    // CONFIGURAÇÃO
+    const SEU_WHATSAPP = "5513991711564"; // MUDE PARA O SEU NÚMERO REAL
+
+    // Lógica de indicação
+    const params = new URLSearchParams(window.location.search);
+    const madrinha = params.get('indicada_por');
+    const btn = document.getElementById('cta-link');
+    const banner = document.getElementById('referral-area');
+
+    let textoMensagem = "Oi! Vi a página sobre o 'segredo do lifestyle' e fiquei super curiosa. Como funciona isso? Quero saber mais 😊";
+
+    if (madrinha) {
+      textoMensagem = `Oi! A *${madrinha}* me mandou o link sobre o segredo do lifestyle. Fiquei curiosa pra caramba, me conta como funciona? 💕`;
+      banner.style.display = "inline-block";
+      banner.innerHTML = `CONVITE VIP DE: ${madrinha}`;
+    }
+
+    // Link final pro WhatsApp
+    btn.href = `https://api.whatsapp.com/send?phone=${SEU_WHATSAPP}&text=${encodeURIComponent(textoMensagem)}`;
+  </script>
+</body>
+</html>
